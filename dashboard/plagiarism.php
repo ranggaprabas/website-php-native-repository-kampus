@@ -6,10 +6,10 @@ require_once '../library/function.php';
 if ($_SESSION['user']['role'] == 3) {
   return header('location:' . BASEURL . 'dashboard/index'); //'<meta http-equiv="refresh" content="0; url='.BASEURL.'dashboard/index">';
 }
-$id = stripslashes(trim($_GET['id']));
+$id = stripslashes(trim($_GET['id_prop']));
 $query = read_data("SELECT * FROM `post` WHERE `jenis` = 2  ORDER BY `id`");
 ?>
-<title>Plagiarism Checker - Repository Teknik Elektro Unsika</title>
+<title>Plagiarism Checker - Repository Teknik Elektro</title>
 
 <body>
   <?php
@@ -43,8 +43,8 @@ $query = read_data("SELECT * FROM `post` WHERE `jenis` = 2  ORDER BY `id`");
                 <?php
                 // Upload to databses
                 $id_prop = $_GET['id_prop'];
-                $sql1 = "SELECT `abstrak` FROM `proposal` WHERE `id` = $id_prop";
-                $sql2 = "SELECT `abstrak` FROM `proposal` WHERE `abstrak` NOT IN (SELECT `abstrak` FROM `proposal` WHERE `id` = $id_prop)";
+                $sql1 = "SELECT `abstrak` FROM `post` WHERE `id` = $id_prop";
+                $sql2 = "SELECT `abstrak` FROM `post` WHERE `abstrak` NOT IN (SELECT `abstrak` FROM `post` WHERE `id` = $id_prop)";
 
                 $query1 = $conn->query($sql1);
                 $query2 = $conn->query($sql2);
