@@ -109,6 +109,7 @@ $query = read_data("SELECT * FROM `post` ORDER BY `status` AND `id`");
                   } else if ($data['status'] == 2) {
                     echo "<a role='button' class='btn btn-danger btn-sm' href='aksi-dokumen.php?id_prop=$id_post&pesan=3'>Batalkan Penolakan</a>";
                   }
+                  echo "<a role='button' class='btn btn-primary btn-sm' href='plagiarism.php?id_prop=$id_post'>Cek Plagiasi</a>";
                   ?>
                   <a role="button" class="btn btn-outline-success" href="<?= BASEURL ?>uploads/post/<?= $data['path']; ?>" target="_blank">Detail</a>
                   <a role="button" class="btn btn-outline-danger" href="delete-post.php?id_post=<?= $data['id'] . "&jenis=" . $data['jenis']; ?>" onclick="return confirm ('Apakah anda benar ingin menghapus <?= $data['judul']; ?> dari daftar Artikel?')">Hapus</a>
